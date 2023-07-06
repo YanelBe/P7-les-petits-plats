@@ -1,0 +1,179 @@
+body {
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
+    font-family: 'Manrope', sans-serif;
+}
+
+#hero {
+    width: 100%;
+    height: 667px;
+    background-image: url(../assets/hero.png);
+    background-position: center center;
+    background-size: cover;
+}
+
+.title-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 100px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-term {
+    width: 954px;
+    height: 72px;
+    border-radius: 11px;
+    flex-grow: 1;
+
+}
+
+.search-term::placeholder {
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    color: #7A7A7A;
+    padding: 0 35px;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
+.search-button:hover .search-image {
+    content: url(../assets/search-valid.png)
+}
+
+.logo {
+    margin-top: 51px;
+    margin-left: 69px;
+}
+
+
+h1 {
+    display: flex;
+    text-align: center;
+    max-width: 750px;
+    justify-content: center;
+    color: #FFD15B;
+    text-transform: uppercase;
+    font-size: 44px;
+    font-weight: lighter;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: lighter;
+    margin-bottom: 25px;
+}
+
+h1, h2 {
+    font-family: 'Anton', sans-serif;
+}
+
+
+/********** RECETTES **********/
+
+.main-section {
+    background-color: #EDEDED;
+    padding: 100px;
+}
+
+.recipes-section {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recipe-article {
+    width: 380px;
+    height: 731px;
+    border-radius: 21px;
+    background-color: white;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.recipe-time {
+    position: absolute;
+    margin: 21px;
+    padding: 5px 15px;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #FFD15B;
+    border-radius: 14px;
+}
+
+.recipe-image {
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    width: 380px;
+    height: 253px;
+    object-fit: cover
+}
+
+.recipe-ingredients-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #7A7A7A;
+    margin-bottom: 0;
+}
+
+.recipe-info {
+    padding: 25px;
+}
+
+.recipe-info h2 {
+    margin-top: 0;
+}
+
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-description-text {
+    font-size: 14px;
+    /* Les lignes suivantes permettent de limiter l'affichage du texte à 4 lignes, comme sur la maquette */
+    height: 80px;
+    overflow: hidden;
+}
+
+.ingredients-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ingredient-block {
+    margin: 12px 0;
+    font-size: 14px;
+    width: 45%;
+}
+
+.ingredient-quantity {
+    margin: 0;
+    color: #7A7A7A;
+}
+
+.ingredient-name {
+    font-weight: bold;
+    margin: 0;
+}
