@@ -11,6 +11,8 @@ const filtersDiv = document.querySelector(".filter-container");
 const mainSearch = document.querySelector(".main-search");
 const clearSearchIcon = document.querySelector(".clear-search");
 const recipesSection = document.querySelector(".recipes-section");
+const recipesPlaceholder = document.querySelector(".recipes-placeholder");
+const searchMessage = document.querySelector(".search-message");
 
 
 //Sets pour stocker les valeurs uniques des ingrédients, appareils et ustensiles
@@ -145,6 +147,13 @@ function filterRecipes() {
     if (matchesSearchWords && hasSelectedIngredients && hasSelectedAppliance && hasSelectedUtensils) {
       filteredRecipes.push(recipe);
     }
+  }
+
+  //Si la liste de recettes est vide après filtrage, on appelle la fonction displayData
+  //La fonction contiendra un tableau vide qui permettra d'afficher le message d'erreur
+  if (filteredRecipes.length === 0) {
+    displayData([]);
+    return;
   }
 
   //On remet à jour la liste des recettes
@@ -430,6 +439,8 @@ function toggleClearSearchIcon() {
 //On réinitialise le champ de recherche principal lors du rechargement de la page
 document.addEventListener("DOMContentLoaded", () => {
   mainSearch.value = "";
+  //Cela permet par défaut de cacher la croix de suppression de texte
+  mainSearch.dispatchEvent(new Event("input"));
 });
 
 //On écoute l'évènement input lorsqu'on entre du texte dans la barre de recherche principale
@@ -448,11 +459,6 @@ clearSearchIcon.addEventListener("click", () => {
   toggleClearSearchIcon();
   //On filtre de nouveau les recettes
   filterRecipes();
-});
-
-//Cela permet par défaut de cacher la croix de suppression de texte
-document.addEventListener("DOMContentLoaded", () => {
-  mainSearch.dispatchEvent(new Event("input"));
 });
 
 const dropdowns = document.querySelectorAll(".dropdown");

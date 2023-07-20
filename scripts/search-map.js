@@ -94,6 +94,13 @@ function filterRecipes() {
     return matchesSearchWords && hasSelectedIngredients && hasSelectedAppliance && hasSelectedUtensils;
   });
 
+  //Si la liste de recettes est vide après filtrage, on appelle la fonction displayData
+  //La fonction contiendra un tableau vide qui permettra d'afficher le message d'erreur
+  if (filteredRecipes.length === 0) {
+    displayData([]);
+    return;
+  }
+
   displayData(filteredRecipes);
   filterDropdownLists(filteredRecipes);
 }
@@ -353,6 +360,8 @@ function toggleClearSearchIcon() {
 //On réinitialise le champ de recherche principal lors du rechargement de la page
 document.addEventListener("DOMContentLoaded", () => {
   mainSearch.value = "";
+  //Cela permet par défaut de cacher la croix de suppression de texte
+  mainSearch.dispatchEvent(new Event("input"));
 });
 
 //On écoute l'évènement input lorsqu'on entre du texte dans la barre de recherche principale
@@ -371,11 +380,6 @@ clearSearchIcon.addEventListener("click", () => {
   toggleClearSearchIcon();
   //On filtre de nouveau les recettes
   filterRecipes();
-});
-
-//Cela permet par défaut de cacher la croix de suppression de texte
-document.addEventListener("DOMContentLoaded", () => {
-  mainSearch.dispatchEvent(new Event("input"));
 });
 
 const dropdowns = document.querySelectorAll(".dropdown");

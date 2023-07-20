@@ -104,6 +104,9 @@ h1, h2 {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     font-size: 16px;
 }
 
@@ -112,8 +115,26 @@ h1, h2 {
     flex-direction: row;
 }
 
+.container-main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .filters-added {
     margin-bottom: 30px;
+}
+
+.recipe-count {
+    font-family: 'Anton', sans-serif;
+    font-size: 21px;
+}
+
+.no-recipes-message {
+    font-family: 'Anton', sans-serif;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .dropdown {
