@@ -1,7 +1,15 @@
-body {
+* {
     box-sizing: border-box;
+  }
+
+body {
+    display: flex;
+    margin: 0px auto;
+    padding: 0;
+    justify-content: center;
+    flex-direction: column;
     max-width: 1440px;
-    margin: 0 auto;
+    width: 100%;
     font-family: 'Manrope', sans-serif;
     background-color: #EDEDED;
 }
@@ -95,6 +103,7 @@ h2 {
 h1, h2 {
     font-family: 'Anton', sans-serif;
 }
+
 
 
 /********** FILTRES **********/
@@ -341,4 +350,161 @@ i.clear-icon.fa-solid.fa-xmark {
 .ingredient-name {
     font-weight: bold;
     margin: 0;
+}
+
+@media screen and (max-width: 992px) {
+
+    h1 {
+        margin: 40px;
+    }
+
+    .search {
+        width: 90%;
+    }
+
+    .main-section {
+        padding: 20px;
+    }
+
+    .container-main-top {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .dropdown {
+        width: 100%;
+        padding: 0;
+        margin: 10px;
+        margin-bottom: 10px;
+    }
+
+    .recipes-section {
+        justify-content: space-around;
+    }
+
+    img.recipe-image {
+        width: 350px;
+    }
+
+    .recipe-article {
+        width: 350px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #hero {
+        height: 400px;
+    }
+
+
+    .title-search {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .search {
+        display: flex;
+        width: 90%;
+    }
+
+
+    .main-search::placeholder {
+        color: white;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin: 40px;
+    }
+
+    #main {
+        width: 100%;
+    }
+
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .container-main-top {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .filter-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dropdown-toggle {
+        width: 100%;
+    }
+
+    .dropdown {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .ingredient-list, .utensil-list, .appliance-list {
+        width: 100%;
+    }
+
+    .recipe-count {
+        padding-bottom: 20px;
+    }
+
+
+    /* Cartes recettes */
+
+    
+
+    .recipes-section {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .recipe-article {
+        width: 100%;
+    }
+
+    img.recipe-image {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 540px) {
+
+    #hero {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    img.logo {
+        width: 200px;
+        margin: 0;
+        margin-top: 40px;
+    }
+
+    .title-search {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
 }
