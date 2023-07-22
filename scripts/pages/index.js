@@ -12,7 +12,7 @@ function displayData(recipes) {
   //On créé une condition pour vérifier si le tableau des recettes est vide
   if (recipes.length === 0) {
     //S'il est vide, on affiche un message d'erreur, avec le contenu de ce qui a été entré dans la barre de recherche
-    noRecipesMessage.textContent = `Aucune recette ne contient "${mainSearch.value}".`;
+    noRecipesMessage.textContent = `Aucune recette ne contient "${mainSearch.value}" avec les mots clés associés.`;
     recipesSection.innerHTML = "";
   } else {
     //Le message est vide si des recettes sont là
