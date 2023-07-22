@@ -192,6 +192,7 @@ i.fa-solid.fa-magnifying-glass {
 }
 
 i.clear-icon.fa-solid.fa-xmark {
+    display: none;
     position: absolute;
     right:50px;
     top: 20px;
