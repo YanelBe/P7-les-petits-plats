@@ -163,6 +163,12 @@ h1, h2 {
     border-radius: 10px;
 }
 
+.dropdown-toggle h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -201,6 +207,7 @@ i.clear-icon.fa-solid.fa-xmark {
 
 .dropdown.open .dropdown-menu {
     display: block;
+    overflow-x: hidden;
 }
 
 .dropdown.open .dropdown-toggle {
@@ -208,17 +215,17 @@ i.clear-icon.fa-solid.fa-xmark {
     border-bottom-right-radius: 0px;
  }
 
-.dropdown-menu li {
+.dropdown-menu p {
     font-size: 14px;
     padding: 10px;
     cursor: pointer;
 }
 
-.dropdown-menu li:hover {
+.dropdown-menu p:hover {
     background-color: #FFD15B;
 }
 
-.dropdown-menu li.selected {
+.dropdown-menu p.selected {
     background-color: #FFD15B;
 }
 

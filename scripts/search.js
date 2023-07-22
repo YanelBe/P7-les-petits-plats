@@ -150,7 +150,7 @@ function displayFilters() {
         //On supprime l'aspect de filtre sélectionné dans la liste des filtres même lorsqu'on clique sur la fermeture du filtre dans la liste des filtres actifs
         const dropdownMenus = filterSection.querySelectorAll(".dropdown-menu");
         dropdownMenus.forEach((dropdownMenu) => {
-          const filterItems = dropdownMenu.querySelectorAll("li");
+          const filterItems = dropdownMenu.querySelectorAll(".list-element");
           filterItems.forEach((item) => {
             if (item.textContent === value) {
               item.classList.remove("selected");
@@ -172,16 +172,17 @@ function displayFilters() {
 
 
 
-//Fonction pour créer un élément <li> avec gestion des classes sélectionnées
+//Fonction pour créer un élément de liste avec gestion des classes sélectionnées
 //La fonction prend l'argument "text" pour générer le contenu de la liste (ici, les ingrédients, ustensiles ou appareils)
 //Elle prend également l'argument isSelected pour ajouter une classe CSS et changer l'apparence/le comportement si l'élément de liste est sélectionné
 function createListItem(text, isSelected) {
-  const li = document.createElement("li");
-  li.textContent = text;
+  const listElement = document.createElement("p");
+  listElement.classList.add("list-element");
+  listElement.textContent = text;
   if (isSelected) {
-    li.classList.add("selected");
+    listElement.classList.add("selected");
   }
-  return li;
+  return listElement;
 }
 
 //Fonction pour créer les 3 menus contenant les listes des ingrédients, appareils et ustensiles. Cette fonction prend 4 paramètres :
@@ -190,6 +191,7 @@ function createListItem(text, isSelected) {
 //Le troisième "optionsSet" permet de définir l'ensemble des options de la liste, donc chaque élément qui sera listé
 //Le quatrième, "label", est le label de la liste, ce qui sera écrit dessus pour savoir quelle liste on ouvre
 function createDropdownList(container, dropdownId, optionsSet, label) {
+    //On créé le div qui contiendra notre liste
     const dropdown = document.createElement("div");
     dropdown.classList.add("dropdown");
     container.appendChild(dropdown);
@@ -199,16 +201,20 @@ function createDropdownList(container, dropdownId, optionsSet, label) {
     const dropdownToggle = document.createElement("div");
     dropdownToggle.classList.add("dropdown-toggle");
     dropdownToggle.tabIndex = 0;
-    dropdownToggle.textContent = label;
     dropdown.appendChild(dropdownToggle);
+
+    //On créé le label de la liste
+    const titleElement = document.createElement("h3");
+    titleElement.textContent = label;
+    dropdownToggle.appendChild(titleElement);
 
     //On créé l'icone de flèche du menu dropdown
     const dropdownIcon = document.createElement("i");
     dropdownIcon.classList.add("fa-solid", "fa-angle-down");
     dropdownToggle.appendChild(dropdownIcon);
 
-    //On créé la liste <ul> qui contiendra les éléments <li>
-    const dropdownMenu = document.createElement("ul");
+    //On créé la liste qui contiendra les éléments de liste
+    const dropdownMenu = document.createElement("div");
     dropdownMenu.classList.add("dropdown-menu");
     dropdown.appendChild(dropdownMenu);
 
@@ -228,10 +234,10 @@ function createDropdownList(container, dropdownId, optionsSet, label) {
     searchIcon.classList.add("fa-solid", "fa-magnifying-glass");
     searchInput.parentNode.insertBefore(searchIcon, searchInput);
 
-    //Pour chaque option, on créé un nouvel élément <li>, grâce à la fonction createListItem
+    //Pour chaque option, on créé un nouvel élément de liste, grâce à la fonction createListItem
     optionsSet.forEach(option => {
-      const li = createListItem(option, false);
-      dropdownMenu.appendChild(li);
+      const listElement = createListItem(option, false);
+      dropdownMenu.appendChild(listElement);
     });
     
     //On écoute l'évènement clic sur le dropdown, et grâce à la méthode toggle(), on change la visibilité de l'élément
@@ -242,24 +248,24 @@ function createDropdownList(container, dropdownId, optionsSet, label) {
       dropdownIcon.classList.toggle("fa-angle-down", !dropdown.classList.contains("open"));
     });
     
-    const listItems = Array.from(dropdownMenu.querySelectorAll("li"));
+    const listItems = Array.from(dropdownMenu.querySelectorAll(".list-element"));
 
-    //On créé une boucle forEach qui va permettre d'écouter le clic sur un élément <li>
-    listItems.forEach(li => {
-      li.addEventListener("click", () => {
-        const selectedValue = li.textContent;
-        const isSelected = li.classList.contains("selected");
+    //On créé une boucle forEach qui va permettre d'écouter le clic sur un élément de liste
+    listItems.forEach(listElement => {
+      listElement.addEventListener("click", () => {
+        const selectedValue = listElement.textContent;
+        const isSelected = listElement.classList.contains("selected");
 
         //Si l'élément de liste a déjà été sélectionné
         if (isSelected) {
           //On retire la classe qui met l'élément de liste en surbrillance
-          li.classList.remove("selected");
+          listElement.classList.remove("selected");
           //On retire l'élément de listes des filtres lorsqu'on clique dessus
           const updatedFilterValues = selectedFilters[dropdownId].filter(item => item !== selectedValue);
           selectedFilters[dropdownId] = updatedFilterValues;
         } else {
           //Sinon, on le choisi et on rajoute un effet de surbrillance
-          li.classList.add("selected");
+          listElement.classList.add("selected");
           selectedFilters[dropdownId].push(selectedValue);
         }
 
@@ -280,7 +286,7 @@ function createDropdownList(container, dropdownId, optionsSet, label) {
         ? filteredAppliances
         : filteredUtensils;
       
-      //On parcourt les éléments <li> pour normaliser le texte, et afficher les résultats de la recherche
+      //On parcourt les éléments de liste pour normaliser le texte, et afficher les résultats de la recherche
       listItems.forEach(item => {
         const text = textNormalize(item.textContent);
         item.style.display = text.includes(searchValue) && filteredSet.has(textNormalize(text)) ? "" : "none";
@@ -312,9 +318,9 @@ filterSection.appendChild(utensilList);
 //Fonction pour filtrer les éléments de liste dans les listes d'ingrédients, d'ustensiles et d'appareils
 function filterDropdownLists(filteredRecipes) {
 
-  const ingredientItems = ingredientList.querySelectorAll("li");
-  const applianceItems = applianceList.querySelectorAll("li");
-  const utensilItems = utensilList.querySelectorAll("li");
+  const ingredientItems = ingredientList.querySelectorAll(".list-element");
+  const applianceItems = applianceList.querySelectorAll(".list-element");
+  const utensilItems = utensilList.querySelectorAll(".list-element");
 
   //Ensembles pour stocker les valeurs uniques des ustensiles, appareils et ingrédients filtrés
   filteredIngredients.clear();

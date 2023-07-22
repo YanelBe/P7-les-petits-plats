@@ -52,7 +52,7 @@ function recipesFactory(data) {
         recipeDescription.className = "recipe-container";
         
         //On créé un div pour afficher le titre "recette"
-        const recipeDescriptionTitle = document.createElement("p");
+        const recipeDescriptionTitle = document.createElement("h3");
         recipeDescriptionTitle.textContent = "Recette";
         recipeDescriptionTitle.className = "recipe-ingredients-title";
         recipeDescription.appendChild(recipeDescriptionTitle);
@@ -64,11 +64,11 @@ function recipesFactory(data) {
         recipeDescription.appendChild(recipeDescriptionText);
 
         //On créé une section qui va contenir la liste des ingrédients
-        const recipeIngredients = document.createElement("section")
+        const recipeIngredients = document.createElement("div")
         recipeIngredients.className = "ingredients-container"
 
         //On créé un div pour afficher le titre "ingrédients"
-        const recipeIngredientsTitle = document.createElement("p");
+        const recipeIngredientsTitle = document.createElement("h3");
         recipeIngredientsTitle.textContent = "Ingrédients";
         recipeIngredientsTitle.className = "recipe-ingredients-title";
         recipeDescription.appendChild(recipeIngredientsTitle);
