@@ -250,10 +250,15 @@ function createDropdownList(container, dropdownId, optionsSet, label) {
         const selectedValue = li.textContent;
         const isSelected = li.classList.contains("selected");
 
+        //Si l'élément de liste a déjà été sélectionné
         if (isSelected) {
+          //On retire la classe qui met l'élément de liste en surbrillance
+          item.classList.remove("selected");
+          //On retire l'élément de listes des filtres lorsqu'on clique dessus
           const updatedFilterValues = selectedFilters[dropdownId].filter(item => item !== selectedValue);
           selectedFilters[dropdownId] = updatedFilterValues;
         } else {
+          //Sinon, on le choisi et on rajoute un effet de surbrillance
           li.classList.add("selected");
           selectedFilters[dropdownId].push(selectedValue);
         }
